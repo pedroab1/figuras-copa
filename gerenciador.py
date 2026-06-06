@@ -65,3 +65,46 @@ class Gerenciador:
                 return atual.figurinha
             atual = atual.proximo
         return None
+
+    def _remover_repetida(self, id_figurinha: int) -> bool:
+        """
+        Remove uma figurinha da lista de repetidas após uma troca.
+        """
+        atual = self.cabeca_repetidas
+        anterior = None
+        
+        while atual is not None:
+            if atual.figurinha.id == id_figurinha:
+                if anterior is None:
+                    self.cabeca_repetidas = atual.proximo
+                else:
+                    anterior.proximo = atual.proximo
+                self.quantidade_repetidas -= 1
+                return True
+            anterior = atual
+            atual = atual.proximo
+        return False
+
+    def propor_troca(self, minha_repetida_id: int, amigo_repetida_id: int, gerenciador_amigo: 'Gerenciador') -> str:
+        """
+        Lógica completa de troca segura entre dois usuários.
+        """
+        # 1. Verifica se ambos possuem as repetidas prometidas
+        minha_fig = self.buscar_repetida(minha_repetida_id)
+        amigo_fig = gerenciador_amigo.buscar_repetida(amigo_repetida_id)
+        
+        if not minha_fig:
+            return "Erro: Você não possui a figurinha oferecida nas suas repetidas."
+        if not amigo_fig:
+            return "Erro: O usuário alvo não possui a figurinha solicitada nas repetidas."
+            
+        # 2. Verifica se a figurinha recebida já não está no álbum de destino (Evita troca inútil)
+        if self.album.buscar(amigo_repetida_id) is not None:
+            return "Troca cancelada: Você já tem essa figurinha no seu álbum."
+        if gerenciador_amigo.album.buscar(minha_repetida_id) is not None:
+            return "Troca cancelada: O outro usuário já tem a sua figurinha no álbum dele."
+            
+        # 3. Executa a troca: Remove das repetidas de ambos
+        self._remover_repetida(minha_repetida_id)
+        gerenciador_amigo._remover_repetida(amigo_repetida_id)
+        
