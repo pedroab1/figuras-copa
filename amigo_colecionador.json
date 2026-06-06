@@ -1,0 +1,76 @@
+{
+    "album": [
+        {
+            "id": 11,
+            "nome": "Vinícius Jr",
+            "pais": "brasil",
+            "posicao": "Atacante",
+            "raridade": "Lenda"
+        },
+        {
+            "id": 9,
+            "nome": "Denival Biotto",
+            "pais": "inglaterra",
+            "posicao": "Atacante",
+            "raridade": "Ouro"
+        },
+        {
+            "id": 4,
+            "nome": "Natália Thomazelli",
+            "pais": "holanda",
+            "posicao": "Zagueiro",
+            "raridade": "Ouro"
+        },
+        {
+            "id": 15,
+            "nome": "Vladmir Puttin",
+            "pais": "espanha",
+            "posicao": "Meio-Campo",
+            "raridade": "Prata"
+        }
+    ],
+    "repetidas": [
+        {
+            "id": 999,
+            "nome": "Usain Bolt",
+            "pais": "argentina",
+            "posicao": "Atacante",
+            "raridade": "Lenda"
+        },
+        {
+            "id": 10,
+            "nome": "Mbappé",
+            "pais": "franca",
+            "posicao": "Atacante",
+            "raridade": "Ouro"
+        },
+        {
+            "id": 7,
+            "nome": "Cristiano Ronaldo",
+            "pais": "portugal",
+            "posicao": "Atacante",
+            "raridade": "Lenda"
+        },
+        {
+            "id": 1,
+            "nome": "Alisson",
+            "pais": "brasil",
+            "posicao": "Goleiro",
+            "raridade": "Prata"
+        },
+        {
+            "id": 8,
+            "nome": "Thomas Müller",
+            "pais": "alemanha",
+            "posicao": "Atacante",
+            "raridade": "Ouro"
+        },
+        {
+            "id": 22,
+            "nome": "Federico Valverde",
+            "pais": "uruguai",
+            "posicao": "Meio-Campo",
+            "raridade": "Ouro"
+        }
+    ]
+}

@@ -22,7 +22,7 @@ class Album:
         
         novo_nodo = NodoLista(figurinha)
         
-         # Se o álbum está vazio, o novo nó se torna a cabeça
+        # Se o álbum está vazio, o novo nó se torna a cabeça
         if self.cabeca is None:
             self.cabeca = novo_nodo
         else:
@@ -72,6 +72,7 @@ class Album:
                 return atual.figurinha
             atual = atual.proximo
         return None
+
     def buscar_por_jogador(self, nome: str) -> str:
         """
         Busca todas as figurinhas que correspondam ao nome do jogador.
