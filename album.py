@@ -71,4 +71,30 @@ class Album:
                 return atual.figurinha
             atual = atual.proximo
         return None
-       
+    def buscar_por_jogador(self, nome: str) -> str:
+        """
+        Busca todas as figurinhas que correspondam ao nome do jogador.
+        Como não podemos usar listas (list) nativas, retornamos uma string formatada.
+        """
+        atual = self.cabeca
+        resultado = ""
+        while atual is not None:
+            # O .lower() ignora se o usuário digitou maiúsculo ou minúsculo
+            if nome.lower() in atual.figurinha.nome.lower():
+                resultado += f"{atual.figurinha}\n"
+            atual = atual.proximo
+            
+        return resultado if resultado else "Nenhum jogador encontrado com este nome."
+
+    def buscar_por_selecao(self, pais: str) -> str:
+        """
+        Busca todas as figurinhas que correspondam ao nome da seleção (país).
+        """
+        atual = self.cabeca
+        resultado = ""
+        while atual is not None:
+            if pais.lower() == atual.figurinha.pais.lower():
+                resultado += f"{atual.figurinha}\n"
+            atual = atual.proximo
+            
+        return resultado if resultado else "Nenhuma figurinha desta seleção encontrada."
