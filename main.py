@@ -26,3 +26,13 @@ def exibir_menu():
     print("9. Ver Última Troca (Histórico FIFO)")
     print("0. Salvar e Sair")
     print("="*45)
+
+def main():
+    # 1. Inicializa o persistidor e tenta carregar dados existentes do JSON
+    persistencia = GerenciadorDados("meu_album.json")
+    meu_gerenciador = persistencia.carregar()
+
+   # 2. Carrega o gerenciador do "Amigo" a partir de um arquivo JSON separado
+    persistencia_amigo = GerenciadorDados("amigo_album.json")
+    amigo_gerenciador = persistencia_amigo.carregar()
+    print("Bem-vindo ao seu Álbum de Figurinhas!")
