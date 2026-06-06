@@ -108,3 +108,12 @@ class Gerenciador:
         self._remover_repetida(minha_repetida_id)
         gerenciador_amigo._remover_repetida(amigo_repetida_id)
         
+        # 4. Adiciona nos respectivos álbuns
+        self.album.adicionar(amigo_fig)
+        gerenciador_amigo.album.adicionar(minha_fig)
+        
+        # 5. Registra nas Filas FIFO (Histórico)
+        self.historico.registrar_troca(amigo_fig)
+        gerenciador_amigo.historico.registrar_troca(minha_fig)
+        
+        return f"Sucesso! Troca efetuada. Você enviou {minha_fig.nome} e recebeu {amigo_fig.nome}."
