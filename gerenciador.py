@@ -54,3 +54,14 @@ class Gerenciador:
             resultado += f"{atual.figurinha}\n"
             atual = atual.proximo
         return resultado
+
+    def buscar_repetida(self, id_figurinha: int) -> Figurinha:
+        """
+        Busca uma figurinha específica na pilha de repetidas.
+        """
+        atual = self.cabeca_repetidas
+        while atual is not None:
+            if atual.figurinha.id == id_figurinha:
+                return atual.figurinha
+            atual = atual.proximo
+        return None
