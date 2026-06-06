@@ -13,3 +13,15 @@ class Historico:
         Adiciona a figurinha resultante da troca ao histórico (enfileira).
         """
         self.registro.enqueue(figurinha_adquirida)
+
+    def ver_ultima_troca(self) -> Figurinha:
+        """
+        Apenas espia qual foi a última figurinha que entrou na fila para ser processada (peek).
+        """
+        return self.registro.peek()
+        
+    def limpar_historico(self):
+        """
+        Limpa todos os registros de trocas.
+        """
+        self.registro.limpar()
