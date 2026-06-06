@@ -21,6 +21,7 @@ class Album:
             return False 
         
         novo_nodo = NodoLista(figurinha)
+        
          # Se o álbum está vazio, o novo nó se torna a cabeça
         if self.cabeca is None:
             self.cabeca = novo_nodo
@@ -98,3 +99,24 @@ class Album:
             atual = atual.proximo
             
         return resultado if resultado else "Nenhuma figurinha desta seleção encontrada."
+
+    def ver_album_completo(self) -> str:
+        """
+        Retorna uma string com todas as figurinhas coladas no álbum.
+        """
+        if self.cabeca is None:
+            return "Seu álbum está vazio."
+        
+        atual = self.cabeca
+        resultado = "--- SEU ÁLBUM ---\n"
+        while atual is not None:
+            resultado += f"{atual.figurinha}\n"
+            atual = atual.proximo
+        return resultado
+
+    def ver_porcentagem_concluida(self) -> str:
+        """
+        Calcula e retorna a porcentagem baseada no tamanho atual da lista.
+        """
+        porcentagem = (self.tamanho / self.total_figurinhas) * 100
+        return f"Progresso do Álbum: {self.tamanho}/{self.total_figurinhas} figurinhas ({porcentagem:.2f}% concluído)"
