@@ -25,3 +25,32 @@ class Gerenciador:
             self._adicionar_repetida(figurinha)
             return f"Repetida! {figurinha.nome} foi para a pilha de trocas."
         return f"Nova! {figurinha.nome} colada no álbum."
+
+    def _adicionar_repetida(self, figurinha: Figurinha):
+        """
+        Método interno para adicionar um nó na lista de repetidas.
+        """
+        novo_nodo = NodoLista(figurinha)
+        if self.cabeca_repetidas is None:
+            self.cabeca_repetidas = novo_nodo
+        else:
+            atual = self.cabeca_repetidas
+            while atual.proximo is not None:
+                atual = atual.proximo
+            atual.proximo = novo_nodo
+            
+        self.quantidade_repetidas += 1
+
+    def listar_repetidas(self) -> str:
+        """
+        Mostra a lista de figurinhas repetidas.
+        """
+        if self.cabeca_repetidas is None:
+            return "Você não tem figurinhas repetidas."
+        
+        resultado = "--- FIGURINHAS REPETIDAS ---\n"
+        atual = self.cabeca_repetidas
+        while atual is not None:
+            resultado += f"{atual.figurinha}\n"
+            atual = atual.proximo
+        return resultado
