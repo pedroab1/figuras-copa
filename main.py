@@ -36,3 +36,17 @@ def main():
     persistencia_amigo = GerenciadorDados("amigo_album.json")
     amigo_gerenciador = persistencia_amigo.carregar()
     print("Bem-vindo ao seu Álbum de Figurinhas!")
+
+    while True:
+        exibir_menu()
+        opcao = input("Escolha uma opção: ").strip()
+
+        if opcao == '1':
+            print("\n--- ADICIONAR FIGURINHA ---")
+            try:
+                # Tratamento de Erro: O ID precisa ser um número
+                id_fig = int(input("Número (ID) da Figurinha: "))
+                if id_fig <= 0:
+                    print("Erro: O número da figurinha deve ser maior que zero.")
+                    continue
+                    
