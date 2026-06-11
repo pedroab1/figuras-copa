@@ -106,7 +106,7 @@ def main():
 
         elif opcao == '8':
             print("\n--- ÁREA DE TROCAS ---")
-            print(f"DICA: O amigo possui {amigo_gerenciador.quantidade_repetidas} figurinhas repetidas no arquivo dele.")
+            print(f"DICA: visite o arquivo amigo_colecionador.json, o amigo possui {amigo_gerenciador.quantidade_repetidas} figurinhas repetidas no arquivo dele.")
             try:
                 minha_id = int(input("\nQual figurinha SUA você quer oferecer? "))
                 amigo_id = int(input("Qual figurinha do AMIGO você quer receber? "))
