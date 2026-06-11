@@ -33,7 +33,7 @@ def main():
     meu_gerenciador = persistencia.carregar()
 
    # 2. Carrega o gerenciador do "Amigo" a partir de um arquivo JSON separado
-    persistencia_amigo = GerenciadorDados("amigo_album.json")
+    persistencia_amigo = GerenciadorDados("amigo_colecionador.json")
     amigo_gerenciador = persistencia_amigo.carregar()
     print("Bem-vindo ao seu Álbum de Figurinhas!")
 
