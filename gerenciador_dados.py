@@ -7,8 +7,12 @@ class GerenciadorDados:
     def __init__(self, nome_arquivo="meu_album.json"):
         """
         Inicializa a classe responsável por ler e escrever no disco.
+        Garante que o caminho seja absoluto com base na pasta onde os scripts estão salvos.
         """
-        self.arquivo = nome_arquivo
+        # Descobre a pasta absoluta onde este script (gerenciador_dados.py) está localizado
+        diretorio_atual = os.path.dirname(os.path.abspath(__file__))
+        # Une o caminho da pasta com o nome do arquivo JSON solicitado
+        self.arquivo = os.path.join(diretorio_atual, nome_arquivo)
 
     def salvar(self, gerenciador: Gerenciador):
         """
@@ -56,8 +60,11 @@ class GerenciadorDados:
         """
         novo_gerenciador = Gerenciador()
 
-        # Se o arquivo não existir (primeira vez rodando), retorna um gerenciador vazio
+        # Linha de diagnóstico para ajudar a identificar problemas de caminho de arquivo
+        print(f"\n[SISTEMA] Tentando ler o arquivo em: {self.arquivo}")
+
         if not os.path.exists(self.arquivo):
+            print("[SISTEMA] Aviso: Arquivo de origem não encontrado. Iniciando coleção zerada.")
             return novo_gerenciador
 
         with open(self.arquivo, 'r', encoding='utf-8') as f:
@@ -73,4 +80,5 @@ class GerenciadorDados:
             fig = Figurinha(item["id"], item["nome"], item["pais"], item["posicao"], item["raridade"])
             novo_gerenciador._adicionar_repetida(fig)
 
+        print(f"[SISTEMA] Sucesso! Foram carregadas {novo_gerenciador.quantidade_repetidas} figurinhas repetidas.")
         return novo_gerenciador
