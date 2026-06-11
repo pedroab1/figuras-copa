@@ -3,14 +3,13 @@ from figuras import Figurinha
 from gerenciador import Gerenciador
 from gerenciador_dados import GerenciadorDados
 
-# Lista de seleções válidas para tratamento de erro de entrada
 SELECOES_VALIDAS = [
     "brasil", "argentina", "franca", "alemanha", "espanha", 
     "inglaterra", "portugal", "holanda", "italia", "uruguai"
 ]
 
 def exibir_menu():
-    """Imprime o menu iterativo no terminal."""
+
     print("\n" + "="*45)
     print(" 🏆 SISTEMA DE ÁLBUM DA COPA 2026 🏆 ")
     print("="*45)
@@ -28,11 +27,9 @@ def exibir_menu():
     print("="*45)
 
 def main():
-    # 1. Inicializa o persistidor e tenta carregar dados existentes do JSON
     persistencia = GerenciadorDados("meu_album.json")
     meu_gerenciador = persistencia.carregar()
 
-   # 2. Carrega o gerenciador do "Amigo" a partir de um arquivo JSON separado
     persistencia_amigo = GerenciadorDados("amigo_colecionador.json")
     amigo_gerenciador = persistencia_amigo.carregar()
     print("Bem-vindo ao seu Álbum de Figurinhas!")
@@ -44,7 +41,6 @@ def main():
         if opcao == '1':
             print("\n--- ADICIONAR FIGURINHA ---")
             try:
-                # Tratamento de Erro: O ID precisa ser um número
                 id_fig = int(input("Número (ID) da Figurinha: "))
                 if id_fig <= 0:
                     print("Erro: O número da figurinha deve ser maior que zero.")
@@ -55,7 +51,6 @@ def main():
                     print("Erro: O nome não pode ficar em branco.")
                     continue
                     
-                # Tratamento de Erro: Validação de código de seleção
                 pais = input("Seleção (País): ").strip()
                 if pais.lower() not in SELECOES_VALIDAS:
                     print(f"Erro: Seleção '{pais}' inválida.")
@@ -65,7 +60,6 @@ def main():
                 posicao = input("Posição: ").strip()
                 raridade = input("Raridade (Comum, Prata, Ouro, Lenda): ").strip()
 
-                # Instancia a figurinha e manda para o gerenciador processar
                 nova_fig = Figurinha(id_fig, nome, pais, posicao, raridade)
                 resultado = meu_gerenciador.receber_figurinha(nova_fig)
                 print(f"\nResultado: {resultado}")
@@ -111,7 +105,6 @@ def main():
                 minha_id = int(input("\nQual figurinha SUA você quer oferecer? "))
                 amigo_id = int(input("Qual figurinha do AMIGO você quer receber? "))
                 
-                # Executa a lógica complexa de troca passando o gerenciador do amigo
                 resultado_troca = meu_gerenciador.propor_troca(minha_id, amigo_id, amigo_gerenciador)
                 print(f"\n{resultado_troca}")
             except ValueError:
