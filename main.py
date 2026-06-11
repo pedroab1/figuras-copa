@@ -14,7 +14,7 @@ def exibir_menu():
     print("\n" + "="*45)
     print(" 🏆 SISTEMA DE ÁLBUM DA COPA 2026 🏆 ")
     print("="*45)
-    print("1. Abrir pacotinho (Adicionar Figuri8" \
+    print("1. Abrir pacotinho (Adicionar Figuri" \
     "nha)")
     print("2. Ver Álbum Completo")
     print("3. Ver Progresso do Álbum")
